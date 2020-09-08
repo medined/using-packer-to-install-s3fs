@@ -1,0 +1,2 @@
+
+export PACKER_BUILDER_INSTANCE_PROFILE="packer-builder"

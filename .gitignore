@@ -1,0 +1,10 @@
+# Terraform
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
+
+# Project
+s3fs-bucket.txt
+source.me
+tf-packer
+tf-packer.pub
