@@ -125,6 +125,12 @@ resource "aws_instance" "web" {
     Name = "packer-centos"
   }
   # Run a remote exec to wait for the server to be ready for SSH.
+  connection {
+    type        = "ssh"
+    user        = var.ssh_user
+    private_key = file(var.key_private_file)
+    host        = self.public_ip
+  }
   provisioner "remote-exec" {
     inline = [
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 2; done",

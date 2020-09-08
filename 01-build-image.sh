@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ ! -f source.me ]; then
+    echo "Missing file: source.me"
+    exit
+fi
+source source.me
+
 if [ -z $AWS_PROFILE ]; then
     echo "Missing environment variable: AWS_PROFILE"
     exit
@@ -18,11 +24,6 @@ fi
 
 if [ ! -f s3fs-bucket.txt ]; then
     echo "Missing configuration file: s3fs-bucket.txt"
-    exit
-fi
-
-if [ ! -f source.me ]; then
-    echo "Missing file: source.me"
     exit
 fi
 
@@ -46,9 +47,6 @@ else
         export AWS_SECRET_ACCESS_KEY=$KEY2
     fi
 fi
-
-source source.me
-echo "PACKER_BUILDER_INSTANCE_PROFILE: $PACKER_BUILDER_INSTANCE_PROFILE"
 
 #
 # Make sure the S3FS bucket exists.
